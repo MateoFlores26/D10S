@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    font-family: "Helvetica Neue", sans-serif;
+    margin: 25px;
+    background-color: black;
+  }
+  
+  .calculator {
+    background: #005687;
+    border-radius: 50px;
+    color: white;
+    height: 1050px;
+    padding: 20px;
+    position: relative;
+    width: 650px;
+  }
+  
+  .top-container {
+    display: flex;
+    height: 250px;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  
+  .value {
+    background-color: #d1d1d1;
+    color: black;
+    border-radius: 10px;
+    font-size: 130px;
+    font-weight: 300;
+    height: 158px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-left: 50px;
+    text-align: right;
+    padding-right: 10px;
+  }
+  
+  .buttons-container {
+    display: grid;
+    margin-left: 40px;
+    margin-right: 40px;
+    grid-gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+  
+  .button {
+    align-items: center;
+    background: #333;
+    border-radius: 35%;
+    cursor: pointer;
+    display: flex;
+    font-size: 45px;
+    height: 110px;
+    justify-content: center;
+    transition: filter .3s;
+    width: 110px;
+    font-weight: 200;
+  }
+  
+  .button.function {
+    color: black;
+    background: #a5a5a5;
+  }
+  
+  .button.operator {
+    background: #f1a33c;
+  }
+  
+  .button.number-0 {
+    background-color: #48a9e3;
+    border-radius: 40px;
+    grid-column: 1 / span 2;
+    justify-content: flex-start;
+    padding-left: 43px;
+    width: 250px;
+  }
+  
+  .button:active,
+  .button:focus {
+    filter: brightness(120%);
+  }
+  
+  .bottom {
+    display: flex;
+    position: absolute;
+    margin-top: 640px;
+    margin-left: -120px;
+    scale: 0.2;
+  }
+
+  .LasTres {
+    margin-left: 445px;
+    width: 20%;
+    height: 20%;
+  }
+
+  .button.decimal,
+  .button.operator.equal,
+  .button.function.ac,
+  .button.function.pm,
+  .button.function.percent,
+  .button.operator.division {
+    background-color: #48a9e3;
+    color: black;
+  }
+
+  .button.number-4,
+  .button.number-7 {
+    background-color: #f0eced;
+    color: black;
+  }
+
+  .button.number-1 {
+    background-color: #f0eced;
+    color: #8fcef6;
+  }
+
+  .button.number-8,
+  .button.number-5,
+  .button.number-2,
+  .button.number-3,
+  .button.number-6,
+  .button.number-9 {
+    background-color: #fedc55;
+    color: black;
+  }
+
+  .button.operator.multiplication,
+  .button.operator.addition,
+  .button.operator.subtraction {
+    background-color: #f0eced;
+    color: black;
+  }
