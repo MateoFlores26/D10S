@@ -4,8 +4,8 @@ const minuteEl = document.querySelector('.minute');
 const valueEl = document.querySelector('.value');
 
 const acEl = document.querySelector('.ac');
-const pmEl = document.querySelector('.pm');
-const percentEl = document.querySelector('.percent');
+const squareEl = document.querySelector('.square'); // New element for square operation
+const squareRootEl = document.querySelector('.square-root'); // New element for square root operation
 
 const additionEl = document.querySelector('.addition');
 const subtractionEl = document.querySelector('.subtraction');
@@ -29,11 +29,9 @@ const numberElArray = [
   number5El, number6El, number7El, number8El, number9El
 ];
 
-
 // variables
 let valueStrInMemory = null;
 let operatorInMemory = null;
-
 
 // Functions
 const getValueAsStr = () => valueEl.textContent.split(',').join('');
@@ -97,39 +95,28 @@ const handleOperatorClick = (operation) => {
   setStrAsValue('0');
 };
 
-
-
-
 // Add Event Listeners to functions
 acEl.addEventListener('click', () => {
   setStrAsValue('0');
   valueStrInMemory = null;
   operatorInMemory = null;
 });
-pmEl.addEventListener('click', () => {
+squareEl.addEventListener('click', () => { // Event listener for the square operation
   const currentValueNum = getValueAsNum();
-  const currentValueStr = getValueAsStr();
-
-  if (currentValueStr === '-0') {
-    setStrAsValue('0');
-    return;
-  }
-  if (currentValueNum >= 0) {
-    setStrAsValue('-' + currentValueStr);
-  } else {
-    setStrAsValue(currentValueStr.substring(1));
-  }
+  const newValueNum = currentValueNum * currentValueNum;
+  setStrAsValue(newValueNum.toString());
+  valueStrInMemory = null;
+  operatorInMemory = null;
 });
-percentEl.addEventListener('click', () => {
+squareRootEl.addEventListener('click', () => { // Event listener for the square root operation
   const currentValueNum = getValueAsNum();
-  const newValueNum = currentValueNum / 100;
+  const newValueNum = Math.sqrt(currentValueNum);
   setStrAsValue(newValueNum.toString());
   valueStrInMemory = null;
   operatorInMemory = null;
 });
 
-
-// add event listeners to operators
+// Add event listeners to operators
 additionEl.addEventListener('click', () => {
   handleOperatorClick('addition');
 });
@@ -150,9 +137,8 @@ equalEl.addEventListener('click', () => {
   }
 });
 
-
 // Add Event Listeners to numbers and decimal
-for (let i=0; i < numberElArray.length; i++) {
+for (let i = 0; i < numberElArray.length; i++) {
   const numberEl = numberElArray[i];
   numberEl.addEventListener('click', () => {
     handleNumberClick(i.toString());
@@ -164,7 +150,6 @@ decimalEl.addEventListener('click', () => {
     setStrAsValue(currentValueStr + '.');
   }
 });
-
 
 // Set up the time
 const updateTime = () => {
@@ -178,6 +163,6 @@ const updateTime = () => {
   }
   hourEl.textContent = currentHour.toString();
   minuteEl.textContent = currentMinute.toString().padStart(2, '0');
-}
+};
 setInterval(updateTime, 1000);
 updateTime();
